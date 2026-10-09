@@ -1,72 +1,52 @@
-import Box from '@mui/material/Box';
+import './ExpenseLogs.css';
 
-const expenseItems = [
-    {
-        id: 1,
-        title: "Grocery Shopping",
-        amount: 1450,
-        category: "Food",
-        date: "2026-10-01"
-    },
-    {
-        id: 2,
-        title: "Metro Card Recharge",
-        amount: 500,
-        category: "Transport",
-        date: "2026-10-02"
-    },
-    {
-        id: 3,
-        title: "Electricity Bill",
-        amount: 2200,
-        category: "Utilities",
-        date: "2026-10-03"
-    },
-    {
-        id: 4,
-        title: "Movie Tickets",
-        amount: 750,
-        category: "Entertainment",
-        date: "2026-10-04"
-    },
-    {
-        id: 5,
-        title: "Coffee & Snacks",
-        amount: 280,
-        category: "Food",
-        date: "2026-10-05"
-    },
-    {
-        id: 6,
-        title: "Hot Wheels",
-        amount: 180,
-        category: "Toys",
-        date: "2026-10-05"
-    }
-]
+function formatDate(dateStr) {
+    const [year, month, day] = dateStr.split('-');
+    return `${day}-${month}-${year}`;
+}
 
-
-export default function ExpenseLogs() {
+export default function ExpenseLogs({ expenseItems }) {
     const groupedByDate = Object.groupBy(expenseItems, (Item) => Item.date);
+
+    // Array of pale background colors for the date boxes
+    const paleColors = ['#f3f8fe', '#fef8f3', '#f3fef5', '#fef3f8'];
+
     return (
-        <div >
-            {/* Outer Loop: creates one "Box" per unique date */}
+        <div className="logs-container">
             {Object.entries(groupedByDate)
                 .sort(([dateA], [dateB]) => dateB.localeCompare(dateA))
-                .map(([date, expenses]) => (
-                    <Box key={date} sx={{ border: "1px solid black" }} className="date-box">
+                .map(([date, expenses], index) => {
+                    const dateTotal = expenses.reduce((acc, item) => acc + item.amount, 0);
+                    // Cycle through the pale colors based on the index
+                    const bgColor = paleColors[index % paleColors.length];
 
-                        <h3>{date}</h3>
-
-                        {/*Inner Loop: renders all items for this date*/}
-                        {expenses.map((expenses) => (
-                            <div key={expenses.id} className="item-row">
-                                <span>{expenses.title}</span>
-                                <span>₹{expenses.amount}</span>
+                    return (
+                        <div key={date} className="date-box" style={{ backgroundColor: bgColor }}>
+                            <div className="date-header">
+                                <span>{date === '2026-10-05' ? 'Today' : formatDate(date)}</span>
+                                <span>₹-{dateTotal.toLocaleString('en-IN')}</span>
                             </div>
-                        ))}
-                    </Box>
-                ))}
+
+                            {expenses.map((expense) => (
+                                <div key={expense.id} className="item-row">
+                                    <div className="item-left">
+                                        <div className="item-icon-placeholder">
+                                            {/* Temporary icon placeholder */}
+                                            {expense.category.charAt(0)}
+                                        </div>
+                                        <div className="item-details">
+                                            <span className="item-title">{expense.category}</span>
+                                            <span className="item-category">{expense.title}</span>
+                                        </div>
+                                    </div>
+                                    <div className="item-amount">
+                                        - {expense.amount}₹
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    );
+                })}
         </div>
     );
 }

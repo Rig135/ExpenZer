@@ -1,0 +1,21 @@
+.main-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    background-color: transparent;
+    max-width: 440px;
+    margin: 0 auto;
+}
+
+.nav-heading {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    color: #4a4a4a;
+    text-transform: uppercase;
+}
+
+.nav-icon-btn {
+    color: #555 !important;
+}

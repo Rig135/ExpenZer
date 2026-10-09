@@ -1,0 +1,49 @@
+.bottom-bar-wrapper {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #ffffff;
+    border-top: 1px solid #f0f0f0;
+    z-index: 1000;
+}
+
+.bottom-bar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    padding: 0 40px;
+    max-width: 480px; /* Constrain width to match the app layout */
+    margin: 0 auto;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-label {
+    font-size: 10px;
+    color: #bdbdbd;
+    margin-top: -4px;
+}
+
+.add-button-container {
+    margin-top: -30px; /* Elevate the add button slightly above the bar */
+}
+
+.add-btn {
+    background-color: #fff59d; /* Pale yellow */
+    border: none;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    cursor: pointer;
+}

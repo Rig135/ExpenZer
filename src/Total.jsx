@@ -1,12 +1,11 @@
-import Box from '@mui/material/Box';
+import './Total.css';
 
-
-export default function Total() {
+export default function Total({ expenseItems }) {
+    const total = expenseItems.reduce((acc, item) => acc + item.amount, 0);
     return (
-        <>
-            <Box sx={{ border: "1px solid black", textAlign: "center", margin: "auto", height: "300px" }}>
-                <h2>Total Expense this Month:</h2>
-            </Box>
-        </>
+        <div className="total-container">
+            <span className="total-label">Spent this month</span>
+            <h1 className="total-amount"><span style={{ fontSize: '0.6em', verticalAlign: 'top' }}>₹</span>-{total.toLocaleString('en-IN')}</h1>
+        </div >
     )
 }
