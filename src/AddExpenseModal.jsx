@@ -6,6 +6,8 @@ import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
 import LocalOfferOutlinedIcon from '@mui/icons-material/LocalOfferOutlined';
 import SyncOutlinedIcon from '@mui/icons-material/SyncOutlined';
 
+import TagPicker from "./TagPicker";
+
 export default function AddExpenseModal({ onClose, onAddExpense }) {
     const [amount, setAmount] = useState('');
     const [title, setTitle] = useState('');
@@ -97,6 +99,8 @@ export default function AddExpenseModal({ onClose, onAddExpense }) {
                         </button>
                     </div>
                 </form>
+
+                {isTagOpen && <TagPicker onSelectTag={(tag) => setSelectedTag(tag)} onClose={() => setIsTagOpen(false)} />}
             </div>
         </div>
     );

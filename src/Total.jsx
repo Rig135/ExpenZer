@@ -6,6 +6,6 @@ export default function Total({ expenseItems }) {
         <div className="total-container">
             <span className="total-label">Spent this month</span>
             <h1 className="total-amount"><span style={{ fontSize: '0.6em', verticalAlign: 'top' }}>₹</span>-{total.toLocaleString('en-IN')}</h1>
-        </div >
+        </div>
     )
 }

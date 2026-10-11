@@ -1,0 +1,158 @@
+/* Backdrop covering the screen */
+.tag-sheet-backdrop {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.15);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    /* Slides up from bottom */
+    z-index: 1100;
+    /* Higher than the main modal */
+    animation: fadeIn 0.2s ease;
+}
+
+/* Bottom Sheet Container */
+.tag-sheet-container {
+    width: 100%;
+    max-width: 440px;
+    background-color: #ffffff;
+    border-top-left-radius: 28px;
+    border-top-right-radius: 28px;
+    padding: 20px 24px 34px;
+    margin-bottom: 70px;
+    box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.08);
+    animation: slideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tag-sheet-header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.tag-sheet-title {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    color: #8e8e93;
+    text-transform: uppercase;
+}
+
+/* 4-column Grid */
+.tags-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 22px;
+    column-gap: 12px;
+}
+
+.tag-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.15s ease;
+}
+
+.tag-item:hover {
+    transform: translateY(-2px);
+}
+
+.tag-emoji {
+    font-size: 26px;
+    margin-bottom: 6px;
+    line-height: 1;
+}
+
+.tag-name {
+    font-size: 11px;
+    color: #48484a;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* First Circular '+' Slot */
+.add-tag-slot {
+    justify-content: flex-start;
+}
+
+.add-tag-circle {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1.5px solid #e5e5ea;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 4px;
+    transition: border-color 0.2s ease;
+}
+
+.add-tag-circle:hover {
+    border-color: #999;
+}
+
+/* Custom Tag Input Form */
+.new-tag-form {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.emoji-input {
+    width: 44px;
+    font-size: 20px;
+    text-align: center;
+    padding: 6px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+.tag-name-input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.tag-add-btn {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.tag-cancel-btn {
+    background: transparent;
+    border: none;
+    color: #888;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Animations */
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
